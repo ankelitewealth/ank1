@@ -558,11 +558,11 @@ html {
             <!-- Calculator Slider -->
             <div class="max-w-5xl mx-auto">
                 <!-- Slider Navigation -->
-                <div class="flex justify-center gap-4 mb-8">
-                    <button onclick="showCalculator(0)" id="tab-0" class="px-6 py-3 rounded-lg font-semibold bg-white border-2 border-gold-400 text-gold-600">SIP Calculator</button>
-                    <button onclick="showCalculator(1)" id="tab-1" class="px-6 py-3 rounded-lg font-semibold bg-white border border-gray-200 text-gray-600">Goal Calculator</button>
-                    <button onclick="showCalculator(2)" id="tab-2" class="px-6 py-3 rounded-lg font-semibold bg-white border border-gray-200 text-gray-600">Lumpsum Calculator</button>
-                </div>
+<div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 px-2">
+    <button onclick="showCalculator(0)" id="tab-0" class="flex-1 md:flex-none px-3 md:px-6 py-3 rounded-lg font-semibold bg-white border-2 border-gold-400 text-gold-600 text-[11px] md:text-base whitespace-nowrap">SIP</button>
+    <button onclick="showCalculator(1)" id="tab-1" class="flex-1 md:flex-none px-3 md:px-6 py-3 rounded-lg font-semibold bg-white border border-gray-200 text-gray-600 text-[11px] md:text-base whitespace-nowrap">Goal</button>
+    <button onclick="showCalculator(2)" id="tab-2" class="flex-1 md:flex-none px-3 md:px-6 py-3 rounded-lg font-semibold bg-white border border-gray-200 text-gray-600 text-[11px] md:text-base whitespace-nowrap">Lumpsum</button>
+</div>
                 
                 <!-- SIP Calculator -->
                 <div id="calc-0" class="calculator-slide active">
