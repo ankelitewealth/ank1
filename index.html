@@ -585,77 +585,75 @@ html {
 </div>
                 
                 <!-- SIP Calculator -->
-                <div id="calc-0" class="calculator-slide active">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-orange-100">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-6">SIP Calculator</h3>
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="text-sm font-medium text-gray-700 mb-2 block flex justify-between">
-                                        <span>Monthly Investment</span>
-                                        <span id="sip-amount-display" class="text-gold-600 font-bold">₹1,00,000</span>
-                                    </label>
-                                    <input type="range" id="sip-amount" min="500" max="500000" value="100000" step="500" class="w-full" oninput="updateSIP()">
-                                </div>
-                                <div>
-                                    <label class="text-sm font-medium text-gray-700 mb-2 block flex justify-between">
-                                        <span>Expected Returns</span>
-                                        <span id="sip-return-display" class="text-gold-600 font-bold">12%</span>
-                                    </label>
-                                    <input type="range" id="sip-return" min="1" max="30" value="12" step="0.5" class="w-full" oninput="updateSIP()">
-                                </div>
-                                <div>
-                                    <label class="text-sm font-medium text-gray-700 mb-2 block flex justify-between">
-                                        <span>Time Period</span>
-                                        <span id="sip-years-display" class="text-gold-600 font-bold">20 Years</span>
-                                    </label>
-                                    <input type="range" id="sip-years" min="1" max="30" value="20" class="w-full" oninput="updateSIP()">
-                                </div>
-                            </div>
-                        </div>
-                        
-<div class="bg-white rounded-2xl p-8 shadow-lg border border-orange-100 flex flex-col justify-between">
-    <h3 class="text-xl font-bold text-gray-900 mb-6">Investment Analysis</h3>
-    
-    <div class="grid grid-cols-2 gap-6 items-center">
-        <div class="space-y-5">
-            <div>
-                <div class="flex items-center mb-1">
-                    <div class="w-2.5 h-2.5 bg-blue-600 rounded-full mr-2"></div>
-                    <span class="text-xs text-black uppercase font-bold tracking-wider">Total Invested</span>
+<div id="calc-0" class="calculator-slide active">
+    <div class="grid md:grid-cols-2 gap-4 md:gap-8">
+        <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100">
+            <h3 class="text-lg md:text-2xl font-bold text-gray-900 mb-3 md:mb-6">SIP Calculator</h3>
+            <div class="space-y-4 md:space-y-6">
+                <div>
+                    <label class="text-[10px] md:text-sm font-medium text-gray-700 mb-1 block flex justify-between">
+                        <span>Monthly Investment</span>
+                        <span id="sip-amount-display" class="text-gold-600 font-bold">₹1,00,000</span>
+                    </label>
+                    <input type="range" id="sip-amount" min="500" max="500000" value="100000" step="500" class="w-full h-1.5 md:h-2" oninput="updateSIP()">
                 </div>
-                <span id="sip-invested" class="text-xl font-extrabold text-blue-600 tracking-tight">₹12,00,000</span>
-            </div>
-            
-            <div>
-                <div class="flex items-center mb-1">
-                    <div class="w-2.5 h-2.5 bg-green-500 rounded-full mr-2"></div>
-                    <span class="text-xs text-black uppercase font-bold tracking-wider">Estimated Returns</span>
+                <div>
+                    <label class="text-[10px] md:text-sm font-medium text-gray-700 mb-1 block flex justify-between">
+                        <span>Expected Returns</span>
+                        <span id="sip-return-display" class="text-gold-600 font-bold">12%</span>
+                    </label>
+                    <input type="range" id="sip-return" min="1" max="30" value="12" step="0.5" class="w-full h-1.5 md:h-2" oninput="updateSIP()">
                 </div>
-                <span id="sip-returns" class="text-xl font-extrabold text-green-600 tracking-tight">₹11,23,391</span>
-            </div>
-
-            <div class="pt-4 border-t border-gray-100">
-                <span class="text-xs text-black uppercase font-bold tracking-wider block mb-1">Total Future Value</span>
-                <span id="sip-total" class="text-2xl font-extrabold text-orange-500 tracking-tight">₹23,23,391</span>
+                <div>
+                    <label class="text-[10px] md:text-sm font-medium text-gray-700 mb-1 block flex justify-between">
+                        <span>Time Period</span>
+                        <span id="sip-years-display" class="text-gold-600 font-bold">20 Years</span>
+                    </label>
+                    <input type="range" id="sip-years" min="1" max="30" value="20" class="w-full h-1.5 md:h-2" oninput="updateSIP()">
+                </div>
             </div>
         </div>
+        
+        <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100 flex flex-col justify-between">
+            <h3 class="text-base md:text-xl font-bold text-gray-900 mb-3 md:mb-6">Investment Analysis</h3>
+            
+            <div class="grid grid-cols-2 gap-4 items-center">
+                <div class="space-y-3 md:space-y-5">
+                    <div>
+                        <div class="flex items-center mb-0.5">
+                            <div class="w-2 h-2 bg-blue-600 rounded-full mr-1.5"></div>
+                            <span class="text-[9px] md:text-xs text-black uppercase font-bold tracking-wider">Invested</span>
+                        </div>
+                        <span id="sip-invested" class="text-base md:text-xl font-extrabold text-blue-600 tracking-tight" style="font-family: 'Inter', sans-serif;">₹12,00,000</span>
+                    </div>
+                    
+                    <div>
+                        <div class="flex items-center mb-0.5">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mr-1.5"></div>
+                            <span class="text-[9px] md:text-xs text-black uppercase font-bold tracking-wider">Returns</span>
+                        </div>
+                        <span id="sip-returns" class="text-base md:text-xl font-extrabold text-green-600 tracking-tight" style="font-family: 'Inter', sans-serif;">₹11,23,391</span>
+                    </div>
 
-        <div class="flex flex-col items-center">
-            <div class="w-14 p-1 rounded-xl border-2 border-orange-400 bg-orange-50/30 shadow-sm" style="height: 200px;">
-                <div class="w-full h-full rounded-lg overflow-hidden flex flex-col-reverse bg-gray-50">
-                    <div id="sip-chart-invested" class="w-full bg-blue-600 transition-all duration-700" style="height: 50%;"></div>
-                    <div id="sip-chart-returns" class="w-full bg-green-500 transition-all duration-700 border-b border-white/20" style="height: 50%;"></div>
+                    <div class="pt-2 border-t border-gray-100">
+                        <span class="text-[9px] md:text-xs text-black uppercase font-bold tracking-wider block mb-0.5">Future Value</span>
+                        <span id="sip-total" class="text-lg md:text-2xl font-extrabold text-orange-500 tracking-tight" style="font-family: 'Inter', sans-serif;">₹23,23,391</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-10 md:w-14 p-1 rounded-lg border-2 border-orange-400 bg-orange-50/30 shadow-sm h-[120px] md:h-[200px]">
+                        <div class="w-full h-full rounded-md overflow-hidden flex flex-col-reverse bg-gray-50">
+                            <div id="sip-chart-invested" class="w-full bg-blue-600 transition-all duration-700" style="height: 50%;"></div>
+                            <div id="sip-chart-returns" class="w-full bg-green-500 transition-all duration-700 border-b border-white/20" style="height: 50%;"></div>
+                        </div>
+                    </div>
+                    <span class="text-[8px] uppercase tracking-tighter text-blue-400 mt-2 font-bold">Growth</span>
                 </div>
             </div>
-            <span class="text-[10px] uppercase tracking-tighter text-dark blue-400 mt-3 font-bold">Growth Visualization</span>
         </div>
     </div>
 </div>
-
-
-                    </div>
-                </div>
                 
                 <!-- Goal Calculator -->
  <div id="calc-1" class="calculator-slide">
