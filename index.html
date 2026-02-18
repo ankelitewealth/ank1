@@ -81,27 +81,30 @@
             background: linear-gradient(135deg, #FFF8ED 0%, #FFF0DB 100%);
             border-left: 4px solid #F59E0B;
         }
-.arrow-divider {
+
+/* Update the Parent Row to allow the arrow to find the center */
+.grid.items-stretch {
     position: relative;
 }
+
 .arrow-divider::after {
     content: '→';
     position: absolute;
-    /* This calculates the exact center of the gap to prevent overlapping */
-    right: calc(-1 * (var(--gap, 1rem) / 2) - 8px); 
+    /* This centers the arrow precisely in the gap between columns */
+    left: calc(50% - 10px); 
     top: 50%;
     transform: translateY(-50%);
-    font-size: 18px;
+    font-size: 20px;
     color: #F59E0B;
     font-weight: bold;
     z-index: 30;
-    pointer-events: none; /* Ensures the arrow doesn't interfere with clicks */
+    display: block !important;
 }
 
-/* Specific adjustment for the 2-column mobile gap */
+/* Fine-tuning for Mobile */
 @media (max-width: 768px) {
     .arrow-divider::after {
-        right: -12px; 
+        left: calc(50% - 8px);
         font-size: 14px;
     }
 }
@@ -366,13 +369,12 @@ html {
     </div>
 </div>
 
-<div class="grid grid-cols-2 gap-3 md:gap-6 items-stretch mb-4 md:mb-6 px-2">
-    <div class="problem-side rounded-lg md:rounded-xl p-3 md:p-5 relative arrow-divider">
-        <div class="pr-2 md:pr-4"> <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">
-                Past Performance Chasing
-            </h3>
-            <p class="text-[9px] md:text-sm text-gray-600 leading-tight">Investing blindly based on historical returns.</p>
-        </div>
+<div class="grid grid-cols-2 gap-4 md:gap-8 items-stretch mb-4 md:mb-6 px-2 relative">
+    <div class="problem-side rounded-lg md:rounded-xl p-3 md:p-5 arrow-divider">
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">
+            Past Performance Chasing
+        </h3>
+        <p class="text-[9px] md:text-sm text-gray-600 leading-tight">Investing blindly based on historical returns.</p>
     </div>
     
     <div class="solution-side rounded-lg md:rounded-xl p-3 md:p-5">
