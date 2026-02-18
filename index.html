@@ -95,10 +95,13 @@
             font-weight: bold;
         }
         
-        @media (max-width: 768px) {
-            .arrow-divider::after {
-                display: none;
-            }
+@media (max-width: 768px) {
+    .arrow-divider::after {
+        display: block;
+        right: -12px; /* Moves arrow to the center gap on mobile */
+        font-size: 14px;
+    }
+}
             .comparison-table-header {
                 grid-template-columns: 1fr;
             }
