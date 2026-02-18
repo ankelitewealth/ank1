@@ -87,21 +87,21 @@
 .arrow-divider::after {
     content: '→';
     position: absolute;
-    /* This centers the arrow in the gap between the two boxes */
-    right: -14px; 
+    /* This calculates the exact center of the gap to prevent overlapping */
+    right: calc(-1 * (var(--gap, 1rem) / 2) - 8px); 
     top: 50%;
     transform: translateY(-50%);
     font-size: 18px;
     color: #F59E0B;
     font-weight: bold;
-    z-index: 20;
-    display: block !important; /* Forces visibility */
+    z-index: 30;
+    pointer-events: none; /* Ensures the arrow doesn't interfere with clicks */
 }
 
-/* Adjust for Mobile */
+/* Specific adjustment for the 2-column mobile gap */
 @media (max-width: 768px) {
     .arrow-divider::after {
-        right: -10px; /* Smaller gap for mobile */
+        right: -12px; 
         font-size: 14px;
     }
 }
