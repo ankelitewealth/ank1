@@ -81,24 +81,27 @@
             background: linear-gradient(135deg, #FFF8ED 0%, #FFF0DB 100%);
             border-left: 4px solid #F59E0B;
         }
-        .arrow-divider {
-            position: relative;
-        }
-        .arrow-divider::after {
-            content: '→';
-            position: absolute;
-            right: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 24px;
-            color: #F59E0B;
-            font-weight: bold;
-        }
-        
+.arrow-divider {
+    position: relative;
+}
+.arrow-divider::after {
+    content: '→';
+    position: absolute;
+    /* This centers the arrow in the gap between the two boxes */
+    right: -14px; 
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #F59E0B;
+    font-weight: bold;
+    z-index: 20;
+    display: block !important; /* Forces visibility */
+}
+
+/* Adjust for Mobile */
 @media (max-width: 768px) {
     .arrow-divider::after {
-        display: block;
-        right: -12px; /* Moves arrow to the center gap on mobile */
+        right: -10px; /* Smaller gap for mobile */
         font-size: 14px;
     }
 }
