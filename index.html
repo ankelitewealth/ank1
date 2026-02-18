@@ -122,7 +122,7 @@
             display: none;
         }
         .calculator-slide.active {
-            display: block;
+            display: block !important;
         }
         
         @keyframes countUp {
@@ -960,14 +960,31 @@ html {
 
     <script>
         // Calculator Slider
-        function showCalculator(index) {
-            document.querySelectorAll('.calculator-slide').forEach((el, i) => {
-                el.classList.remove('active');
-                document.getElementById(`tab-${i}`).className = 'px-6 py-3 rounded-lg font-semibold bg-white border border-gray-200 text-gray-600';
-            });
-            document.getElementById(`calc-${index}`).classList.add('active');
-            document.getElementById(`tab-${index}`).className = 'px-6 py-3 rounded-lg font-semibold bg-white border-2 border-gold-400 text-gold-600';
-        }
+function showCalculator(index) {
+    // 1. Hide all slides
+    document.querySelectorAll('.calculator-slide').forEach((el) => {
+        el.classList.remove('active');
+        el.style.display = 'none'; // Force hide
+    });
+
+    // 2. Reset all tab styles to 'inactive'
+    document.querySelectorAll('[id^="tab-"]').forEach((tab) => {
+        tab.className = 'min-w-[85px] md:min-w-[160px] px-2 md:px-6 py-3 rounded-lg font-semibold bg-white border border-gray-200 text-gray-600 text-[11px] md:text-base whitespace-nowrap transition-all';
+    });
+
+    // 3. Show only the selected slide
+    const activeSlide = document.getElementById(`calc-${index}`);
+    if (activeSlide) {
+        activeSlide.classList.add('active');
+        activeSlide.style.display = 'block'; // Force show
+    }
+
+    // 4. Set the clicked tab to 'active'
+    const activeTab = document.getElementById(`tab-${index}`);
+    if (activeTab) {
+        activeTab.className = 'min-w-[85px] md:min-w-[160px] px-2 md:px-6 py-3 rounded-lg font-semibold bg-white border-2 border-gold-400 text-gold-600 text-[11px] md:text-base whitespace-nowrap transition-all';
+    }
+}
         
         // SIP Calculator
         function updateSIP() {
