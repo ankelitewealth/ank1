@@ -656,79 +656,75 @@ html {
 </div>
                 
                 <!-- Goal Calculator -->
- <div id="calc-1" class="calculator-slide">
-    <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white rounded-2xl p-8 shadow-lg border border-orange-100">
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">Goal Calculator</h3>
-            <div class="space-y-6">
+<div id="calc-1" class="calculator-slide">
+    <div class="grid md:grid-cols-2 gap-4 md:gap-8">
+        <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100 flex flex-col justify-center">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6" style="font-family: 'Playfair Display', serif;">Goal Calculator</h3>
+            <div class="space-y-5 md:space-y-6">
                 <div>
-                    <label class="text-sm font-medium text-gray-700 mb-2 block flex justify-between">
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
                         <span>Target Goal Amount</span>
-                        <span id="goal-amount-display" class="text-gold-600 font-bold">₹1,00,00,000</span>
+                        <span id="goal-amount-display" class="text-gold-600 font-black">₹1,00,00,000</span>
                     </label>
-                    <input type="range" id="goal-amount" min="100000" max="50000000" value="10000000" step="100000" class="w-full" oninput="updateGoal()">
+                    <input type="range" id="goal-amount" min="100000" max="50000000" value="10000000" step="100000" class="w-full h-2" oninput="updateGoal()">
                 </div>
                 <div>
-                    <label class="text-sm font-medium text-gray-700 mb-2 block flex justify-between">
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
                         <span>Years to Achieve</span>
-                        <span id="goal-years-display" class="text-gold-600 font-bold">10 Years</span>
+                        <span id="goal-years-display" class="text-gold-600 font-black">10 Years</span>
                     </label>
-                    <input type="range" id="goal-years" min="1" max="30" value="10" class="w-full" oninput="updateGoal()">
+                    <input type="range" id="goal-years" min="1" max="30" value="10" class="w-full h-2" oninput="updateGoal()">
                 </div>
                 <div>
-                    <label class="text-sm font-medium text-gray-700 mb-2 block flex justify-between">
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
                         <span>Expected Return</span>
-                        <span id="goal-return-display" class="text-gold-600 font-bold">12%</span>
+                        <span id="goal-return-display" class="text-gold-600 font-black">12%</span>
                     </label>
-                    <input type="range" id="goal-return" min="1" max="30" value="12" step="0.5" class="w-full" oninput="updateGoal()">
+                    <input type="range" id="goal-return" min="1" max="30" value="12" step="0.5" class="w-full h-2" oninput="updateGoal()">
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-2xl p-8 shadow-lg border border-orange-100 flex flex-col">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">Goal Analysis</h3>
+        <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100">
+            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4" style="font-family: 'Playfair Display', serif;">Goal Analysis</h3>
             
-<div class="mb-5 p-3 bg-orange-50 rounded-xl border border-orange-100 flex items-center justify-center gap-3">
-    <span class="text-[14px] text-black uppercase font-bold tracking-wider whitespace-nowrap">
-        Required Monthly SIP = 
-    </span>
-    <span id="goal-sip" class="text-xl font-extrabold text-orange-500 tracking-tight leading-none">
-        ₹43,041
-    </span>
-</div>
+            <div class="mb-4 p-2 bg-orange-50 rounded-xl border border-orange-100 flex items-center justify-center gap-2">
+                <span class="text-[11px] md:text-xs text-black uppercase font-black tracking-wider whitespace-nowrap">Required SIP =</span>
+                <span id="goal-sip" class="text-lg md:text-xl font-black text-orange-500 tracking-tight leading-none">₹43,041</span>
+            </div>
 
-            <div class="grid grid-cols-2 gap-6 items-center">
-                <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-4 items-center">
+                <div class="space-y-3 md:space-y-5">
                     <div>
-                        <div class="flex items-center mb-0.5">
-                            <div class="w-2 h-2 bg-blue-600 rounded-full mr-2"></div>
-                            <span class="text-[10px] text-black uppercase font-bold tracking-wider">Total Invested</span>
+                        <div class="flex items-center mb-1">
+                            <div class="w-2.5 h-2.5 bg-blue-600 rounded-full mr-2"></div>
+                            <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest">Invested</span>
                         </div>
-                        <span id="goal-invested" class="text-lg font-extrabold text-blue-600 tracking-tight">₹23,86,080</span>
+                        <span id="goal-invested" class="text-base md:text-lg font-bold text-blue-600 tracking-tight" style="font-family: 'Inter', sans-serif;">₹23,86,080</span>
                     </div>
                     
                     <div>
-                        <div class="flex items-center mb-0.5">
-                            <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                            <span class="text-[10px] text-black uppercase font-bold tracking-wider">Expected Growth</span>
+                        <div class="flex items-center mb-1">
+                            <div class="w-2.5 h-2.5 bg-green-500 rounded-full mr-2"></div>
+                            <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest">Growth</span>
                         </div>
-                        <span id="goal-returns" class="text-lg font-extrabold text-green-600 tracking-tight">₹26,13,920</span>
+                        <span id="goal-returns" class="text-base md:text-lg font-bold text-green-600 tracking-tight" style="font-family: 'Inter', sans-serif;">₹26,13,920</span>
                     </div>
 
-                    <div class="pt-3 border-t border-gray-100">
-                        <span class="text-[10px] text-black uppercase font-bold tracking-wider block mb-0.5">Target Goal Value</span>
-                        <span id="goal-total" class="text-xl font-extrabold text-orange-500 tracking-tight">₹1,00,00,000</span>
+                    <div class="pt-2 border-t border-gray-100">
+                        <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest block mb-1">Target Value</span>
+                        <span id="goal-total" class="text-lg md:text-xl font-bold text-orange-500 tracking-tight" style="font-family: 'Inter', sans-serif;">₹1,00,00,000</span>
                     </div>
                 </div>
 
-                <div class="flex flex-col items-center">
-                    <div class="w-12 p-1 rounded-xl border-2 border-orange-400 bg-orange-50/30 shadow-sm" style="height: 160px;">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="w-11 md:w-14 p-1 rounded-xl border-2 border-orange-400 bg-orange-50/30 shadow-sm h-[130px] md:h-[180px]">
                         <div class="w-full h-full rounded-lg overflow-hidden flex flex-col-reverse bg-gray-50">
                             <div id="goal-chart-invested" class="w-full bg-blue-600 transition-all duration-700" style="height: 48%;"></div>
                             <div id="goal-chart-returns" class="w-full bg-green-500 transition-all duration-700 border-b border-white/20" style="height: 52%;"></div>
                         </div>
                     </div>
-                    <span class="text-[10px] uppercase tracking-tighter text-dark blue-400 mt-2 font-bold">Goal Roadmap</span>
+                    <span class="text-[9px] uppercase tracking-tighter text-blue-500 mt-2 font-black">Roadmap</span>
                 </div>
             </div>
         </div>
@@ -736,70 +732,70 @@ html {
 </div>
                 
                 <!-- Lumpsum Calculator -->
-                <div id="calc-2" class="calculator-slide">
-    <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white rounded-2xl p-8 shadow-lg border border-orange-100">
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">Lumpsum Calculator</h3>
-            <div class="space-y-6">
+<div id="calc-2" class="calculator-slide">
+    <div class="grid md:grid-cols-2 gap-4 md:gap-8">
+        <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100 flex flex-col justify-center">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6" style="font-family: 'Playfair Display', serif;">Lumpsum Calculator</h3>
+            <div class="space-y-5 md:space-y-6">
                 <div>
-                    <label class="text-sm font-medium text-gray-700 mb-2 block flex justify-between">
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
                         <span>Investment Amount</span>
-                        <span id="lumpsum-amount-display" class="text-gold-600 font-bold">₹10,00,000</span>
+                        <span id="lumpsum-amount-display" class="text-gold-600 font-black">₹10,00,000</span>
                     </label>
-                    <input type="range" id="lumpsum-amount" min="10000" max="10000000" value="1000000" step="10000" class="w-full" oninput="updateLumpsum()">
+                    <input type="range" id="lumpsum-amount" min="10000" max="10000000" value="1000000" step="10000" class="w-full h-2" oninput="updateLumpsum()">
                 </div>
                 <div>
-                    <label class="text-sm font-medium text-gray-700 mb-2 block flex justify-between">
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
                         <span>Time Period</span>
-                        <span id="lumpsum-years-display" class="text-gold-600 font-bold">20 Years</span>
+                        <span id="lumpsum-years-display" class="text-gold-600 font-black">20 Years</span>
                     </label>
-                    <input type="range" id="lumpsum-years" min="1" max="30" value="20" class="w-full" oninput="updateLumpsum()">
+                    <input type="range" id="lumpsum-years" min="1" max="30" value="20" class="w-full h-2" oninput="updateLumpsum()">
                 </div>
                 <div>
-                    <label class="text-sm font-medium text-gray-700 mb-2 block flex justify-between">
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
                         <span>Expected Return</span>
-                        <span id="lumpsum-return-display" class="text-gold-600 font-bold">12%</span>
+                        <span id="lumpsum-return-display" class="text-gold-600 font-black">12%</span>
                     </label>
-                    <input type="range" id="lumpsum-return" min="1" max="30" value="12" step="0.5" class="w-full" oninput="updateLumpsum()">
+                    <input type="range" id="lumpsum-return" min="1" max="30" value="12" step="0.5" class="w-full h-2" oninput="updateLumpsum()">
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-2xl p-8 shadow-lg border border-orange-100 flex flex-col justify-between">
-            <h3 class="text-xl font-bold text-gray-900 mb-6">Investment Analysis</h3>
+        <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100">
+            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6" style="font-family: 'Playfair Display', serif;">Investment Analysis</h3>
             
-            <div class="grid grid-cols-2 gap-6 items-center">
-                <div class="space-y-5">
+            <div class="grid grid-cols-2 gap-4 items-center">
+                <div class="space-y-4 md:space-y-5">
                     <div>
                         <div class="flex items-center mb-1">
                             <div class="w-2.5 h-2.5 bg-blue-600 rounded-full mr-2"></div>
-                            <span class="text-xs text-black uppercase font-bold tracking-wider">Initial Investment</span>
+                            <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest">Initial</span>
                         </div>
-                        <span id="lumpsum-invested" class="text-xl font-extrabold text-blue-600 tracking-tight">₹1,00,000</span>
+                        <span id="lumpsum-invested" class="text-lg md:text-xl font-bold text-blue-600 tracking-tight" style="font-family: 'Inter', sans-serif;">₹1,00,000</span>
                     </div>
                     
                     <div>
                         <div class="flex items-center mb-1">
                             <div class="w-2.5 h-2.5 bg-green-500 rounded-full mr-2"></div>
-                            <span class="text-xs text-black uppercase font-bold tracking-wider">Total Returns</span>
+                            <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest">Returns</span>
                         </div>
-                        <span id="lumpsum-returns" class="text-xl font-extrabold text-green-600 tracking-tight">₹2,10,585</span>
+                        <span id="lumpsum-returns" class="text-lg md:text-xl font-bold text-green-600 tracking-tight" style="font-family: 'Inter', sans-serif;">₹2,10,585</span>
                     </div>
 
-                    <div class="pt-4 border-t border-gray-100">
-                        <span class="text-xs text-black uppercase font-bold tracking-wider block mb-1">Total Future Value</span>
-                        <span id="lumpsum-total" class="text-2xl font-extrabold text-orange-500 tracking-tight">₹3,10,585</span>
+                    <div class="pt-3 border-t border-gray-100">
+                        <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest block mb-1">Future Value</span>
+                        <span id="lumpsum-total" class="text-xl md:text-2xl font-bold text-orange-500 tracking-tight" style="font-family: 'Inter', sans-serif;">₹3,10,585</span>
                     </div>
                 </div>
 
-                <div class="flex flex-col items-center">
-                    <div class="w-14 p-1 rounded-xl border-2 border-orange-400 bg-orange-50/30 shadow-sm" style="height: 200px;">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="w-12 md:w-14 p-1 rounded-xl border-2 border-orange-400 bg-orange-50/30 shadow-sm h-[140px] md:h-[200px]">
                         <div class="w-full h-full rounded-lg overflow-hidden flex flex-col-reverse bg-gray-50">
                             <div id="lumpsum-chart-invested" class="w-full bg-blue-600 transition-all duration-700" style="height: 32%;"></div>
                             <div id="lumpsum-chart-returns" class="w-full bg-green-500 transition-all duration-700 border-b border-white/20" style="height: 68%;"></div>
                         </div>
                     </div>
-                    <span class="text-[10px] uppercase tracking-tighter text-dark blue-400 mt-3 font-bold">Wealth Projection</span>
+                    <span class="text-[10px] uppercase tracking-tighter text-blue-500 mt-2 font-black">Projection</span>
                 </div>
             </div>
         </div>
