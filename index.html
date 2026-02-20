@@ -613,6 +613,13 @@ html {
                     </label>
                     <input type="range" id="sip-years" min="1" max="30" value="20" class="w-full h-2" oninput="updateSIP()">
                 </div>
+				<div>
+				    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
+     			   <span>Annual Step-up %</span>
+     			   <span id="sip-stepup-display" class="text-gold-600 font-black">10%</span>
+  				  </label>
+ 				   <input type="range" id="sip-stepup" min="0" max="50" value="10" step="1" class="w-full h-2" oninput="updateSIP()">
+				</div>
             </div>
         </div>
         
@@ -1007,30 +1014,43 @@ function showCalculator(index) {
 }
         
         // SIP Calculator
-        function updateSIP() {
-            const amount = parseInt(document.getElementById('sip-amount').value);
-            const rate = parseFloat(document.getElementById('sip-return').value);
-            const years = parseInt(document.getElementById('sip-years').value);
-            
-            document.getElementById('sip-amount-display').textContent = `₹${amount.toLocaleString('en-IN')}`;
-            document.getElementById('sip-return-display').textContent = `${rate}%`;
-            document.getElementById('sip-years-display').textContent = `${years} Years`;
-            
-            const months = years * 12;
-            const monthlyRate = rate / 12 / 100;
-            const futureValue = amount * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
-            const invested = amount * months;
-            const returns = futureValue - invested;
-            
-            document.getElementById('sip-invested').textContent = `₹${Math.round(invested).toLocaleString('en-IN')}`;
-            document.getElementById('sip-returns').textContent = `₹${Math.round(returns).toLocaleString('en-IN')}`;
-            document.getElementById('sip-total').textContent = `₹${Math.round(futureValue).toLocaleString('en-IN')}`;
-            
-            const investedPct = (invested / futureValue * 100);
-            const returnsPct = (returns / futureValue * 100);
-            document.getElementById('sip-chart-invested').style.height = `${investedPct}%`;
-            document.getElementById('sip-chart-returns').style.height = `${returnsPct}%`;
+      function updateSIP() {
+    const monthlyInvest = parseInt(document.getElementById('sip-amount').value);
+    const rate = parseFloat(document.getElementById('sip-return').value);
+    const years = parseInt(document.getElementById('sip-years').value);
+    const stepUpPercent = parseFloat(document.getElementById('sip-stepup').value) / 100;
+    
+    document.getElementById('sip-amount-display').textContent = `₹${monthlyInvest.toLocaleString('en-IN')}`;
+    document.getElementById('sip-return-display').textContent = `${rate}%`;
+    document.getElementById('sip-years-display').textContent = `${years} Years`;
+    document.getElementById('sip-stepup-display').textContent = `${stepUpPercent * 100}%`;
+    
+    const monthlyRate = rate / 12 / 100;
+    let totalInvested = 0;
+    let futureValue = 0;
+    let currentMonthlyInvest = monthlyInvest;
+
+    // Calculate year by year to account for the annual step-up
+    for (let year = 1; year <= years; year++) {
+        for (let month = 1; month <= 12; month++) {
+            futureValue = (futureValue + currentMonthlyInvest) * (1 + monthlyRate);
+            totalInvested += currentMonthlyInvest;
         }
+        // Apply annual step-up after every 12 months
+        currentMonthlyInvest = currentMonthlyInvest * (1 + stepUpPercent);
+    }
+    
+    const returns = futureValue - totalInvested;
+    
+    document.getElementById('sip-invested').textContent = `₹${Math.round(totalInvested).toLocaleString('en-IN')}`;
+    document.getElementById('sip-returns').textContent = `₹${Math.round(returns).toLocaleString('en-IN')}`;
+    document.getElementById('sip-total').textContent = `₹${Math.round(futureValue).toLocaleString('en-IN')}`;
+    
+    const investedPct = (totalInvested / futureValue * 100);
+    const returnsPct = (returns / futureValue * 100);
+    document.getElementById('sip-chart-invested').style.height = `${investedPct}%`;
+    document.getElementById('sip-chart-returns').style.height = `${returnsPct}%`;
+}
         
         // Goal Calculator
         function updateGoal() {
