@@ -7,13 +7,11 @@
     <title>ANK Elite Wealth & Investment Services | Portfolio Management India</title>
     <meta name="description" content="Secure your future with ANK Elite Wealth. Data-driven investment strategies, mutual funds, and retirement planning for HNIs and NRIs. Expert financial discipline.">
     <meta name="keywords" content="Wealth Management India, Investment Services Pune, NRI Investment Advisor, Mutual Funds Distributor, Financial Planning">
-    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FinancialService",
       "name": "ANK Elite Wealth & Investment Services",
-      "description": "Data-driven wealth management and investment services specializing in Mutual Funds, PMS, and Insurance.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Pune",
@@ -22,7 +20,6 @@
       }
     }
     </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -44,12 +41,13 @@
         
         .premium-gradient { background: linear-gradient(135deg, #FFFBF5 0%, #FFF8ED 100%); }
         .gold-gradient { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
-        .stat-number {
-            background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-        }
+.stat-number {
+    /* Restored to your original gold shade */
+    background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
         .ornament {
             width: 60px;
             height: 3px;
@@ -71,6 +69,7 @@
                         linear-gradient(135deg, #F59E0B, #FB923C) border-box;
         }
         
+        /* Problem-Solution Table Header Styles */
         .comparison-table-header {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -101,41 +100,57 @@
             border-left: 4px solid #F59E0B;
         }
 
-        .grid.items-stretch { position: relative; }
+/* Update the Parent Row to allow the arrow to find the center */
+.grid.items-stretch {
+    position: relative;
+}
 
-        .arrow-divider::after {
-            content: '→';
-            position: absolute;
-            left: calc(50% - 10px); 
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-            color: #F59E0B;
-            font-weight: bold;
-            z-index: 30;
+.arrow-divider::after {
+    content: '→';
+    position: absolute;
+    /* This centers the arrow precisely in the gap between columns */
+    left: calc(50% - 10px); 
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #F59E0B;
+    font-weight: bold;
+    z-index: 30;
+    display: block !important;
+}
+
+/* Fine-tuning for Mobile */
+@media (max-width: 768px) {
+    .arrow-divider::after {
+        left: calc(50% - 8px);
+        font-size: 14px;
+    }
+}
+            .comparison-table-header {
+                grid-template-columns: 1fr;
+            }
+        
+        /* Calculator Slider */
+        .calculator-slide {
+            display: none;
+        }
+        .calculator-slide.active {
             display: block !important;
         }
-
-        @media (max-width: 768px) {
-            .arrow-divider::after {
-                left: calc(50% - 8px);
-                font-size: 14px;
-            }
-        }
-        
-        .calculator-slide { display: none; }
-        .calculator-slide.active { display: block !important; }
         
         @keyframes countUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-count { animation: countUp 1s ease-out; }
-        html { scroll-padding-top: 80px; }
+html {
+    scroll-padding-top: 80px; /* Adjusts for the height of your sticky header */
+}
+		
     </style>
 </head>
 <body class="bg-white">
-<header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-orange-100">
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-orange-100">
     <div class="max-w-7xl mx-auto px-6 py-3">
         <div class="flex justify-between items-center">
             <div class="flex items-center">
@@ -183,7 +198,26 @@
     </div>
 </header>
 
-<section class="premium-gradient pt-6 pb-12" id="home">
+<script>
+    // Logic to open/close the mobile menu
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function toggleMenu() {
+        mobileMenu.classList.toggle('hidden');
+    }
+
+    if (menuBtn) {
+        menuBtn.addEventListener('click', toggleMenu);
+    }
+
+    // Close the menu automatically when a link is clicked
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', toggleMenu);
+    });
+</script>
+
+    <section class="premium-gradient pt-6 pb-12" id="home">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-6 gap-x-12 items-start">
                 
@@ -191,11 +225,13 @@
 <h1 class="text-3xl lg:text-5xl font-bold text-[#0f172a] mb-6 leading-[1.1] lg:leading-[1.25]">
     <span class="inline-block">Build a Future of</span>
     <br class="lg:hidden"/> 
+    
     <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-600 to-orange-500 inline-block" style="font-family: 'Playfair Display', serif;">
         Financial Freedom
     </span>
     <br class="hidden lg:block"/> 
     <br class="lg:hidden"/> 
+    
     <span class="inline-block">
         <span class="text-3xl lg:text-5xl font-bold">with</span> 
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-600 to-orange-500 text-3xl lg:text-5xl inline-block" style="font-family: 'Playfair Display', serif;">
@@ -203,6 +239,7 @@
         </span>
     </span>
     <br class="lg:hidden"/> 
+    
     <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-600 to-orange-500 text-3xl lg:text-5xl inline-block pb-1" style="font-family: 'Playfair Display', serif;">
         Discipline
     </span>
@@ -234,61 +271,97 @@
                         </div>
                     </div>
 
-                    <div class="mb-10">
-                        <p class="text-[10px] font-bold text-dark blue-400 mb-2 uppercase tracking-widest">Investment Products</p>
-                        <div class="flex flex-wrap gap-2">
-                            <div class="flex items-center bg-blue-50/50 px-2.5 py-1 rounded border border-blue-100 min-w-fit">
-                                <span class="text-blue-700 font-bold text-[11px] whitespace-nowrap">Mutual Funds</span>
-                            </div>
-                            <div class="flex items-center bg-purple-50/50 px-2.5 py-1 rounded border border-purple-100 min-w-fit">
-                                <span class="text-purple-700 font-bold text-[11px] whitespace-nowrap">SIFs / PMS</span>
-                            </div>
-                            <div class="flex items-center bg-green-50/50 px-2.5 py-1 rounded border border-green-100 min-w-fit">
-                                <span class="text-green-700 font-bold text-[11px] whitespace-nowrap">Fixed Deposits</span>
-                            </div>
-                            <div class="flex items-center bg-red-50/50 px-2.5 py-1 rounded border border-red-100 min-w-fit">
-                                <span class="text-red-700 font-bold text-[11px] whitespace-nowrap">Insurance</span>
-                            </div>
-                        </div>
-                    </div>
+    <div class="mb-10">
+    <p class="text-[10px] font-bold text-dark blue-400 mb-2 uppercase tracking-widest">Investment Products</p>
+    <div class="flex flex-wrap gap-2">
+        
+        <div class="flex items-center bg-blue-50/50 px-2.5 py-1 rounded border border-blue-100 min-w-fit">
+            <svg class="w-3 h-3 text-blue-600 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+            <span class="text-blue-700 font-bold text-[11px] whitespace-nowrap">Mutual Funds</span>
+        </div>
 
-                    <div class="flex flex-col sm:flex-row gap-3 mb-10">
-                        <button onclick="document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'})" class="gold-gradient text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-lg hover:shadow-xl transition-all">
-                            Schedule a Free Consultation
-                        </button>
-                        <button onclick="window.open('https://wa.me/919766844012')" class="elegant-border bg-white text-gray-800 px-6 py-2.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2">
-                            Chat on WhatsApp
-                        </button>
-                    </div>
+        <div class="flex items-center bg-purple-50/50 px-2.5 py-1 rounded border border-purple-100 min-w-fit">
+            <svg class="w-3 h-3 text-purple-600 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+            </svg>
+            <span class="text-purple-700 font-bold text-[11px] whitespace-nowrap">SIFs / PMS</span>
+        </div>
 
-                    <div class="grid grid-cols-3 gap-1 md:gap-3 max-w-full overflow-hidden">
-                        <div class="premium-card rounded-xl py-3 px-1 md:p-3 text-center">
-                            <div class="text-[14px] lg:text-3xl font-bold stat-number mb-1">₹150+ Crore</div>
-                            <div class="text-[8px] lg:text-[10px] text-gray-600 font-semibold uppercase">Assets Managed</div>
-                        </div>
-                        <div class="premium-card rounded-xl py-3 px-1 md:p-3 text-center">
-                            <div class="text-[14px] lg:text-3xl font-bold stat-number mb-1">200+</div>
-                            <div class="text-[8px] lg:text-[10px] text-gray-600 font-semibold uppercase">Global Clients</div>
-                        </div>
-                        <div class="premium-card rounded-xl py-3 px-1 md:p-3 text-center">
-                            <div class="text-[14px] lg:text-3xl font-bold stat-number mb-1">25+</div>
-                            <div class="text-[8px] lg:text-[10px] text-gray-600 font-semibold uppercase">Years Expertise</div>
-                        </div>
-                    </div>
+        <div class="flex items-center bg-green-50/50 px-2.5 py-1 rounded border border-green-100 min-w-fit">
+            <svg class="w-3 h-3 text-green-600 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="text-green-700 font-bold text-[11px] whitespace-nowrap">Fixed Deposits</span>
+        </div>
+
+        <div class="flex items-center bg-red-50/50 px-2.5 py-1 rounded border border-red-100 min-w-fit">
+            <svg class="w-3 h-3 text-red-600 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <span class="text-red-700 font-bold text-[11px] whitespace-nowrap">Insurance</span>
+        </div>
+    </div>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 mb-10">
+    <button onclick="document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'})" class="gold-gradient text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-lg hover:shadow-xl transition-all">
+        Schedule a Free Consultation
+    </button>
+    
+    <button onclick="window.open('https://wa.me/919766844012')" class="elegant-border bg-white text-gray-800 px-6 py-2.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2">
+        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Chat on WhatsApp
+    </button>
+</div>
+<div class="grid grid-cols-3 gap-1 md:gap-3 max-w-full overflow-hidden">
+    <div class="premium-card rounded-xl py-3 px-1 md:p-3 text-center flex flex-col items-center justify-center">
+        <div class="text-[14px] lg:text-3xl font-bold stat-number mb-1 whitespace-nowrap" style="font-family: 'Inter', sans-serif;">
+            ₹150+ Crore
+        </div>
+        <div class="text-[8px] lg:text-[10px] text-gray-600 font-semibold whitespace-nowrap tracking-normal">
+            Assets Under Management
+        </div>
+    </div>
+
+    <div class="premium-card rounded-xl py-3 px-1 md:p-3 text-center flex flex-col items-center justify-center">
+        <div class="text-[14px] lg:text-3xl font-bold stat-number mb-1 whitespace-nowrap" style="font-family: 'Inter', sans-serif;">
+            200+
+        </div>
+        <div class="text-[8px] lg:text-[10px] text-gray-600 font-semibold whitespace-nowrap tracking-normal">
+            Satisfied Global Clients
+        </div>
+    </div>
+
+    <div class="premium-card rounded-xl py-3 px-1 md:p-3 text-center flex flex-col items-center justify-center">
+        <div class="text-[14px] lg:text-3xl font-bold stat-number mb-1 whitespace-nowrap" style="font-family: 'Inter', sans-serif;">
+            25+
+        </div>
+        <div class="text-[8px] lg:text-[10px] text-gray-600 font-semibold whitespace-nowrap tracking-normal">
+            Years of Expertise
+        </div>
+    </div>
+</div>
+					
                 </div>
 
-                <div class="lg:col-span-2 pt-6 lg:pt-10">
+<div class="lg:col-span-2 pt-6 lg:pt-10">
    					 <div class="rounded-3xl shadow-xl h-[300px] md:h-[450px] border-4 border-white relative overflow-hidden">
    					     <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1000&q=80" 
-     			              class="w-full h-full object-cover" 
-        			          alt="ANK Elite Wealth Portfolio Management and Analytics Dashboard">
+     			        class="w-full h-full object-cover" 
+        			     alt="ANK Elite Wealth Portfolio Analysis">
  				   </div>
 				</div>
+
             </div>
         </div>
     </section>
+                
+             
 
-<section class="py-10 bg-white" id="philosophy">
+    <section class="py-10 bg-white" id="philosophy">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-8">
             <div class="ornament mx-auto mb-3"></div>
@@ -300,75 +373,90 @@
         
 <div class="grid grid-cols-2 gap-4 md:gap-8 max-w-7xl mx-auto mb-4 px-2">
     <div class="problem-header py-2 md:py-3 px-2 md:px-4 rounded-lg md:rounded-xl flex items-center justify-center">
-        <span class="text-[10px] md:text-lg font-bold">The Pain</span>
+        <span class="text-[10px] md:text-lg font-bold flex items-center whitespace-nowrap" style="font-family: 'Playfair Display', serif;">
+            <svg class="w-3 h-3 md:w-5 md:h-5 mr-1 md:mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            The Pain
+        </span>
     </div>
     <div class="solution-header py-2 md:py-3 px-1 md:px-4 rounded-lg md:rounded-xl flex items-center justify-center">
-        <span class="text-[10px] md:text-lg font-bold text-gray-900">The ANK Elite Solution</span>
+        <span class="text-[10px] md:text-lg font-bold text-gray-900 flex items-center whitespace-nowrap" style="font-family: 'Playfair Display', serif;">
+            <svg class="w-3 h-3 md:w-5 md:h-5 mr-1 md:mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            The ANK Elite Solution
+        </span>
     </div>
 </div>
 
 <div class="grid grid-cols-2 gap-4 md:gap-8 items-stretch mb-4 md:mb-6 px-2 relative">
     <div class="problem-side rounded-lg md:rounded-xl p-3 md:p-5 arrow-divider">
-        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight">Past Performance Chasing</h3>
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">
+            Past Performance Chasing
+        </h3>
         <p class="text-[9px] md:text-sm text-gray-600 leading-tight">Investing blindly based on historical returns without deep-dive risk analysis.</p>
     </div>
+    
     <div class="solution-side rounded-lg md:rounded-xl p-3 md:p-5">
-        <h3 class="text-[10px] md:text-lg font-bold text-gray-900 mb-1 leading-tight">Risk-Adjusted Returns</h3>
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-900 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">
+            Risk-Adjusted Returns
+        </h3>
         <p class="text-[9px] md:text-sm text-gray-700 leading-tight">We utilize data-backed models focused on risk-adjusted suitability.</p>
     </div>
 </div>
 
 <div class="grid grid-cols-2 gap-4 md:gap-8 items-stretch mb-4 md:mb-6 px-2 relative">
     <div class="problem-side rounded-lg md:rounded-xl p-3 md:p-5 arrow-divider">
-        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight">Concentration Risk</h3>
-        <p class="text-[9px] md:text-sm text-gray-600 leading-tight">Being over-invested in a single asset class.</p>
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">Concentration Risk</h3>
+        <p class="text-[9px] md:text-sm text-gray-600 leading-tight">Being over-invested in a single asset class (e.g., only Real Estate).</p>
     </div>
     <div class="solution-side rounded-lg md:rounded-xl p-3 md:p-5">
-        <h3 class="text-[10px] md:text-lg font-bold text-gray-900 mb-1 leading-tight">Diversified Asset Allocation</h3>
-        <p class="text-[9px] md:text-sm text-gray-700 leading-tight">We analyze global economic cycles to highlight diversification opportunities.</p>
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-900 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">Diversified Asset Allocation</h3>
+        <p class="text-[9px] md:text-sm text-gray-700 leading-tight">We analyse global economic cycles to highlight diversification opportunities.</p>
     </div>
 </div>
 
 <div class="grid grid-cols-2 gap-4 md:gap-8 items-stretch mb-4 md:mb-6 px-2 relative">
     <div class="problem-side rounded-lg md:rounded-xl p-3 md:p-5 arrow-divider">
-        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight">Scheme Overload</h3>
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">Scheme Overload</h3>
         <p class="text-[9px] md:text-sm text-gray-600 leading-tight">Managing too many schemes, resulting in confusion and diluted returns.</p>
     </div>
     <div class="solution-side rounded-lg md:rounded-xl p-3 md:p-5">
-        <h3 class="text-[10px] md:text-lg font-bold text-gray-900 mb-1 leading-tight">Timely Rotation & Selection</h3>
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-900 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">Timely Rotation & Selection</h3>
         <p class="text-[9px] md:text-sm text-gray-700 leading-tight">We manage the "Switch Points" based on current market cycle data.</p>
     </div>
 </div>
 
 <div class="grid grid-cols-2 gap-4 md:gap-8 items-stretch mb-4 md:mb-6 px-2 relative">
     <div class="problem-side rounded-lg md:rounded-xl p-3 md:p-5 arrow-divider">
-        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight">Aimless Investing</h3>
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">Aimless Investing</h3>
         <p class="text-[9px] md:text-sm text-gray-600 leading-tight">Investing without a defined goal or mapping wealth to life milestones.</p>
     </div>
     <div class="solution-side rounded-lg md:rounded-xl p-3 md:p-5">
-        <h3 class="text-[10px] md:text-lg font-bold text-gray-900 mb-1 leading-tight">Strategic Milestone Mapping</h3>
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-900 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">Strategic Milestone Mapping</h3>
         <p class="text-[9px] md:text-sm text-gray-700 leading-tight">Every rupee is given a "Job Description" mapped to specific goals.</p>
     </div>
 </div>
 
 <div class="grid grid-cols-2 gap-4 md:gap-8 items-stretch mb-4 md:mb-6 px-2 relative">
     <div class="problem-side rounded-lg md:rounded-xl p-3 md:p-5 arrow-divider">
-        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight">Emotional Panic</h3>
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">Emotional Panic</h3>
         <p class="text-[9px] md:text-sm text-gray-600 leading-tight">Making impulsive decisions or panic-selling during fluctuations.</p>
     </div>
     <div class="solution-side rounded-lg md:rounded-xl p-3 md:p-5">
-        <h3 class="text-[10px] md:text-lg font-bold text-gray-900 mb-1 leading-tight">Behavioural Discipline</h3>
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-900 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">Behavioural Discipline</h3>
         <p class="text-[9px] md:text-sm text-gray-700 leading-tight">We provide the data required to help you stay disciplined during downswings.</p>
     </div>
 </div>
 
 <div class="grid grid-cols-2 gap-4 md:gap-8 items-stretch mb-4 md:mb-6 px-2 relative">
     <div class="problem-side rounded-lg md:rounded-xl p-3 md:p-5 arrow-divider">
-        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight">Operational Friction</h3>
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-700 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">Operational Friction</h3>
         <p class="text-[9px] md:text-sm text-gray-600 leading-tight">Manual tracking and fragmented views of fragmented holdings.</p>
     </div>
     <div class="solution-side rounded-lg md:rounded-xl p-3 md:p-5">
-        <h3 class="text-[10px] md:text-lg font-bold text-gray-900 mb-1 leading-tight">Elite Digital Experience</h3>
+        <h3 class="text-[10px] md:text-lg font-bold text-gray-900 mb-1 leading-tight" style="font-family: 'Playfair Display', serif;">Elite Digital Experience</h3>
         <p class="text-[9px] md:text-sm text-gray-700 leading-tight">100% Paper-less with 24/7 global access to your consolidated portfolio.</p>
     </div>
 </div>
@@ -376,7 +464,7 @@
     </div>
 </section>
 
- <section class="py-12 premium-gradient overflow-hidden" id="process">
+    <section class="py-12 premium-gradient overflow-hidden" id="process">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-12">
             <div class="ornament mx-auto mb-4"></div>
@@ -389,17 +477,38 @@
                 <div class="absolute -top-5 left-6 w-11 h-11 rounded-full bg-gradient-to-br from-gold-400 to-orange-400 flex items-center justify-center text-white font-bold text-xl shadow-md z-30">1</div>
                 <h3 class="text-xl font-bold text-gray-900 mt-5 mb-3">Information Gathering</h3>
                 <p class="text-base text-gray-600 leading-relaxed">Understanding your cash flow, assets, liabilities, and risk tolerance.</p>
+                
+                <div class="hidden lg:flex absolute top-0 bottom-0 -right-6 items-center justify-center w-4 z-20">
+                    <svg class="w-7 h-7 text-orange-400 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
             </div>
+            
             <div class="bg-white rounded-2xl p-7 shadow-lg border border-orange-100 relative group">
                 <div class="absolute -top-5 left-6 w-11 h-11 rounded-full bg-gradient-to-br from-gold-400 to-orange-400 flex items-center justify-center text-white font-bold text-xl shadow-md z-30">2</div>
                 <h3 class="text-xl font-bold text-gray-900 mt-5 mb-3">Strategic Framework</h3>
                 <p class="text-base text-gray-600 leading-relaxed">Curated investment suite aligned with your specific life milestones.</p>
+                
+                <div class="hidden lg:flex absolute top-0 bottom-0 -right-6 items-center justify-center w-4 z-20">
+                    <svg class="w-7 h-7 text-orange-400 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
             </div>
+            
             <div class="bg-white rounded-2xl p-7 shadow-lg border border-orange-100 relative group">
                 <div class="absolute -top-5 left-6 w-11 h-11 rounded-full bg-gradient-to-br from-gold-400 to-orange-400 flex items-center justify-center text-white font-bold text-xl shadow-md z-30">3</div>
                 <h3 class="text-xl font-bold text-gray-900 mt-5 mb-3">Digital Execution</h3>
                 <p class="text-base text-gray-600 leading-relaxed">Seamless, paperless implementation with 24/7 global portfolio access.</p>
+                
+                <div class="hidden lg:flex absolute top-0 bottom-0 -right-6 items-center justify-center w-4 z-20">
+                    <svg class="w-7 h-7 text-orange-400 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
             </div>
+            
             <div class="bg-white rounded-2xl p-7 shadow-lg border border-orange-100 relative">
                 <div class="absolute -top-5 left-6 w-11 h-11 rounded-full bg-gradient-to-br from-gold-400 to-orange-400 flex items-center justify-center text-white font-bold text-xl shadow-md z-30">4</div>
                 <h3 class="text-xl font-bold text-gray-900 mt-5 mb-3">Support & Monitoring</h3>
@@ -409,34 +518,58 @@
     </div>
 </section>
 
-    <section class="py-10 bg-white" id="services">
+<section class="py-10 bg-white" id="services">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <div class="ornament mx-auto mb-6"></div>
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Investment Suite</h2>
 				<p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    We have the following financial products at your service.
+                    We have following financial products at your service.
                 </p>
             </div>
             
 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
     <div class="premium-card rounded-2xl p-5 md:p-8 text-center flex flex-col items-center">
-        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-3">Mutual Funds</h3>
-        <p class="text-[13px] md:text-sm text-gray-600">Diversified global portfolios for growth and income.</p>
+        <div class="w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-6 rounded-full bg-gradient-to-br from-gold-400 to-orange-400 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+        </div>
+        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-3" style="font-family: 'Playfair Display', serif;">Mutual Funds</h3>
+        <p class="text-[13px] md:text-sm text-gray-600 leading-snug md:leading-relaxed">Diversified global portfolios for growth, income and tax saving.</p>
     </div>
+    
     <div class="premium-card rounded-2xl p-5 md:p-8 text-center flex flex-col items-center">
-        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-3">Fixed Income</h3>
-        <p class="text-[13px] md:text-sm text-gray-600">FDs and Bonds for capital preservation.</p>
+        <div class="w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-6 rounded-full bg-gradient-to-br from-gold-400 to-orange-400 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+        </div>
+        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-3" style="font-family: 'Playfair Display', serif;">Fixed Income</h3>
+        <p class="text-[13px] md:text-sm text-gray-600 leading-snug md:leading-relaxed">FDs and Bonds for capital preservation.</p>
     </div>
+    
     <div class="premium-card rounded-2xl p-5 md:p-8 text-center flex flex-col items-center">
-        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-3">Specialized</h3>
-        <p class="text-[13px] md:text-sm text-gray-600">PMS and SIFs for high-conviction strategies.</p>
+        <div class="w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-6 rounded-full bg-gradient-to-br from-gold-400 to-orange-400 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+            </svg>
+        </div>
+        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-3" style="font-family: 'Playfair Display', serif;">Specialized</h3>
+        <p class="text-[13px] md:text-sm text-gray-600 leading-snug md:leading-relaxed">PMS and SIFs for high-conviction strategies.</p>
     </div>
+    
     <div class="premium-card rounded-2xl p-5 md:p-8 text-center flex flex-col items-center">
-        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-3">Insurance</h3>
-        <p class="text-[13px] md:text-sm text-gray-600">Term and Health Insurance for protection.</p>
+        <div class="w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-6 rounded-full bg-gradient-to-br from-gold-400 to-orange-400 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+        </div>
+        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1 md:mb-3" style="font-family: 'Playfair Display', serif;">Insurance</h3>
+        <p class="text-[13px] md:text-sm text-gray-600 leading-snug md:leading-relaxed">Term and Health Insurance for protection.</p>
     </div>
 </div>
+			
         </div>
     </section>
 
@@ -446,57 +579,259 @@
                 <div class="ornament mx-auto mb-6"></div>
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Wealth Lab</h2>
 				<p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Try our financial calculators to see the impact in the long run.
+                    Try our financial calculatores to see the impact in longer run
                 </p>
             </div>
             
             <div class="max-w-5xl mx-auto">
                 <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 px-2">
-                    <button onclick="showCalculator(0)" id="tab-0" class="min-w-[85px] md:min-w-[160px] px-2 md:px-6 py-3 rounded-lg font-semibold bg-white border-2 border-gold-400 text-gold-600">SIP</button>
-                    <button onclick="showCalculator(1)" id="tab-1" class="min-w-[85px] md:min-w-[160px] px-2 md:px-6 py-3 rounded-lg font-semibold bg-white border border-gray-200 text-gray-600">Goal</button>
-                    <button onclick="showCalculator(2)" id="tab-2" class="min-w-[85px] md:min-w-[160px] px-2 md:px-6 py-3 rounded-lg font-semibold bg-white border border-gray-200 text-gray-600">Lumpsum</button>
-                </div>
+    <button onclick="showCalculator(0)" id="tab-0" class="min-w-[85px] md:min-w-[160px] px-2 md:px-6 py-3 rounded-lg font-semibold bg-white border-2 border-gold-400 text-gold-600 text-[11px] md:text-base whitespace-nowrap transition-all">
+        SIP
+    </button>
+    <button onclick="showCalculator(1)" id="tab-1" class="min-w-[85px] md:min-w-[160px] px-2 md:px-6 py-3 rounded-lg font-semibold bg-white border border-gray-200 text-gray-600 text-[11px] md:text-base whitespace-nowrap transition-all">
+        Goal
+    </button>
+    <button onclick="showCalculator(2)" id="tab-2" class="min-w-[85px] md:min-w-[160px] px-2 md:px-6 py-3 rounded-lg font-semibold bg-white border border-gray-200 text-gray-600 text-[11px] md:text-base whitespace-nowrap transition-all">
+        Lumpsum
+    </button>
+</div>
                 
-<div id="calc-0" class="calculator-slide active">
+                <div id="calc-0" class="calculator-slide active">
     <div class="grid md:grid-cols-2 gap-4 md:gap-8">
-        <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100">
-            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">SIP Calculator</h3>
-            <div class="space-y-6">
+        <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100 flex flex-col justify-center">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6" style="font-family: 'Playfair Display', serif;">SIP Calculator</h3>
+            <div class="space-y-5 md:space-y-6">
                 <div>
-                    <label class="text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
                         <span>Monthly Investment</span>
                         <span id="sip-amount-display" class="text-gold-600 font-black">₹1,00,000</span>
                     </label>
                     <input type="range" id="sip-amount" min="500" max="500000" value="100000" step="500" class="w-full h-2" oninput="updateSIP()">
                 </div>
                 <div>
-                    <label class="text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
                         <span>Expected Returns</span>
                         <span id="sip-return-display" class="text-gold-600 font-black">12%</span>
                     </label>
                     <input type="range" id="sip-return" min="1" max="30" value="12" step="0.5" class="w-full h-2" oninput="updateSIP()">
                 </div>
                 <div>
-                    <label class="text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
                         <span>Time Period</span>
                         <span id="sip-years-display" class="text-gold-600 font-black">20 Years</span>
                     </label>
                     <input type="range" id="sip-years" min="1" max="30" value="20" class="w-full h-2" oninput="updateSIP()">
                 </div>
+				<div>
+				    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
+     			   <span>Annual Step-up %</span>
+     			   <span id="sip-stepup-display" class="text-gold-600 font-black">10%</span>
+  				  </label>
+ 				   <input type="range" id="sip-stepup" min="0" max="50" value="10" step="1" class="w-full h-2" oninput="updateSIP()">
+				</div>
             </div>
         </div>
+        
         <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100">
-            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6">Investment Analysis</h3>
-            <div class="space-y-4">
-                <div class="flex justify-between"><span>Invested:</span> <span id="sip-invested" class="font-bold">₹24,00,000</span></div>
-                <div class="flex justify-between"><span>Returns:</span> <span id="sip-returns" class="font-bold text-green-600">₹75,91,479</span></div>
-                <div class="flex justify-between border-t pt-4"><span>Total Value:</span> <span id="sip-total" class="font-black text-orange-500">₹99,91,479</span></div>
+            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6" style="font-family: 'Playfair Display', serif;">Investment Analysis</h3>
+            
+            <div class="grid grid-cols-2 gap-4 items-center">
+                <div class="space-y-4 md:space-y-5">
+                    <div>
+                        <div class="flex items-center mb-1">
+                            <div class="w-2.5 h-2.5 bg-blue-600 rounded-full mr-2"></div>
+                            <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest">Invested</span>
+                        </div>
+                        <span id="sip-invested" class="text-lg md:text-xl font-bold text-blue-600 tracking-tight" style="font-family: 'Inter', sans-serif;">₹12,00,000</span>
+                    </div>
+                    
+                    <div>
+                        <div class="flex items-center mb-1">
+                            <div class="w-2.5 h-2.5 bg-green-500 rounded-full mr-2"></div>
+                            <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest">Returns</span>
+                        </div>
+                        <span id="sip-returns" class="text-lg md:text-xl font-bold text-green-600 tracking-tight" style="font-family: 'Inter', sans-serif;">₹11,23,391</span>
+                    </div>
+
+                    <div class="pt-3 border-t border-gray-100">
+                        <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest block mb-1">Future Value</span>
+                        <span id="sip-total" class="text-xl md:text-2xl font-bold text-orange-500 tracking-tight" style="font-family: 'Inter', sans-serif;">₹23,23,391</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center justify-center">
+                    <div class="w-12 md:w-14 p-1 rounded-xl border-2 border-orange-400 bg-orange-50/30 shadow-sm h-[140px] md:h-[200px]">
+                        <div class="w-full h-full rounded-lg overflow-hidden flex flex-col-reverse bg-gray-50">
+                            <div id="sip-chart-invested" class="w-full bg-blue-600 transition-all duration-700" style="height: 50%;"></div>
+                            <div id="sip-chart-returns" class="w-full bg-green-500 transition-all duration-700 border-b border-white/20" style="height: 50%;"></div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] uppercase tracking-tighter text-blue-500 mt-2 font-black">Growth</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                
+                <div id="calc-1" class="calculator-slide">
+    <div class="grid md:grid-cols-2 gap-4 md:gap-8">
+        <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100 flex flex-col justify-center">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6" style="font-family: 'Playfair Display', serif;">Goal Calculator</h3>
+            <div class="space-y-5 md:space-y-6">
+                <div>
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
+                        <span>Target Goal Amount</span>
+                        <span id="goal-amount-display" class="text-gold-600 font-black">₹1,00,00,000</span>
+                    </label>
+                    <input type="range" id="goal-amount" min="100000" max="50000000" value="10000000" step="100000" class="w-full h-2" oninput="updateGoal()">
+                </div>
+                <div>
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
+                        <span>Years to Achieve</span>
+                        <span id="goal-years-display" class="text-gold-600 font-black">10 Years</span>
+                    </label>
+                    <input type="range" id="goal-years" min="1" max="30" value="10" class="w-full h-2" oninput="updateGoal()">
+                </div>
+                <div>
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
+                        <span>Expected Return</span>
+                        <span id="goal-return-display" class="text-gold-600 font-black">12%</span>
+                    </label>
+                    <input type="range" id="goal-return" min="1" max="30" value="12" step="0.5" class="w-full h-2" oninput="updateGoal()">
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100">
+            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4" style="font-family: 'Playfair Display', serif;">Goal Analysis</h3>
+            
+            <div class="mb-4 p-2 bg-orange-50 rounded-xl border border-orange-100 flex items-center justify-center gap-2">
+                <span class="text-[11px] md:text-xs text-black uppercase font-black tracking-wider whitespace-nowrap">Required SIP =</span>
+                <span id="goal-sip" class="text-lg md:text-xl font-black text-orange-500 tracking-tight leading-none">₹43,041</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 items-center">
+                <div class="space-y-3 md:space-y-5">
+                    <div>
+                        <div class="flex items-center mb-1">
+                            <div class="w-2.5 h-2.5 bg-blue-600 rounded-full mr-2"></div>
+                            <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest">Invested</span>
+                        </div>
+                        <span id="goal-invested" class="text-base md:text-lg font-bold text-blue-600 tracking-tight" style="font-family: 'Inter', sans-serif;">₹23,86,080</span>
+                    </div>
+                    
+                    <div>
+                        <div class="flex items-center mb-1">
+                            <div class="w-2.5 h-2.5 bg-green-500 rounded-full mr-2"></div>
+                            <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest">Growth</span>
+                        </div>
+                        <span id="goal-returns" class="text-base md:text-lg font-bold text-green-600 tracking-tight" style="font-family: 'Inter', sans-serif;">₹26,13,920</span>
+                    </div>
+
+                    <div class="pt-2 border-t border-gray-100">
+                        <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest block mb-1">Target Value</span>
+                        <span id="goal-total" class="text-lg md:text-xl font-bold text-orange-500 tracking-tight" style="font-family: 'Inter', sans-serif;">₹1,00,00,000</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center justify-center">
+                    <div class="w-11 md:w-14 p-1 rounded-xl border-2 border-orange-400 bg-orange-50/30 shadow-sm h-[130px] md:h-[180px]">
+                        <div class="w-full h-full rounded-lg overflow-hidden flex flex-col-reverse bg-gray-50">
+                            <div id="goal-chart-invested" class="w-full bg-blue-600 transition-all duration-700" style="height: 48%;"></div>
+                            <div id="goal-chart-returns" class="w-full bg-green-500 transition-all duration-700 border-b border-white/20" style="height: 52%;"></div>
+                        </div>
+                    </div>
+                    <span class="text-[9px] uppercase tracking-tighter text-blue-500 mt-2 font-black">Roadmap</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                
+                <div id="calc-2" class="calculator-slide">
+    <div class="grid md:grid-cols-2 gap-4 md:gap-8">
+        <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100 flex flex-col justify-center">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6" style="font-family: 'Playfair Display', serif;">Lumpsum Calculator</h3>
+            <div class="space-y-5 md:space-y-6">
+                <div>
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
+                        <span>Investment Amount</span>
+                        <span id="lumpsum-amount-display" class="text-gold-600 font-black">₹10,00,000</span>
+                    </label>
+                    <input type="range" id="lumpsum-amount" min="10000" max="10000000" value="1000000" step="10000" class="w-full h-2" oninput="updateLumpsum()">
+                </div>
+                <div>
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
+                        <span>Time Period</span>
+                        <span id="lumpsum-years-display" class="text-gold-600 font-black">20 Years</span>
+                    </label>
+                    <input type="range" id="lumpsum-years" min="1" max="30" value="20" class="w-full h-2" oninput="updateLumpsum()">
+                </div>
+                <div>
+                    <label class="text-[12px] md:text-sm font-bold text-gray-800 mb-1.5 block flex justify-between">
+                        <span>Expected Return</span>
+                        <span id="lumpsum-return-display" class="text-gold-600 font-black">12%</span>
+                    </label>
+                    <input type="range" id="lumpsum-return" min="1" max="30" value="12" step="0.5" class="w-full h-2" oninput="updateLumpsum()">
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-4 md:p-8 shadow-lg border border-orange-100">
+            <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6" style="font-family: 'Playfair Display', serif;">Investment Analysis</h3>
+            
+            <div class="grid grid-cols-2 gap-4 items-center">
+                <div class="space-y-4 md:space-y-5">
+                    <div>
+                        <div class="flex items-center mb-1">
+                            <div class="w-2.5 h-2.5 bg-blue-600 rounded-full mr-2"></div>
+                            <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest">Initial</span>
+                        </div>
+                        <span id="lumpsum-invested" class="text-lg md:text-xl font-bold text-blue-600 tracking-tight" style="font-family: 'Inter', sans-serif;">₹1,00,000</span>
+                    </div>
+                    
+                    <div>
+                        <div class="flex items-center mb-1">
+                            <div class="w-2.5 h-2.5 bg-green-500 rounded-full mr-2"></div>
+                            <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest">Returns</span>
+                        </div>
+                        <span id="lumpsum-returns" class="text-lg md:text-xl font-bold text-green-600 tracking-tight" style="font-family: 'Inter', sans-serif;">₹2,10,585</span>
+                    </div>
+
+                    <div class="pt-3 border-t border-gray-100">
+                        <span class="text-[10px] md:text-xs text-gray-500 uppercase font-black tracking-widest block mb-1">Future Value</span>
+                        <span id="lumpsum-total" class="text-xl md:text-2xl font-bold text-orange-500 tracking-tight" style="font-family: 'Inter', sans-serif;">₹3,10,585</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center justify-center">
+                    <div class="w-12 md:w-14 p-1 rounded-xl border-2 border-orange-400 bg-orange-50/30 shadow-sm h-[140px] md:h-[200px]">
+                        <div class="w-full h-full rounded-lg overflow-hidden flex flex-col-reverse bg-gray-50">
+                            <div id="lumpsum-chart-invested" class="w-full bg-blue-600 transition-all duration-700" style="height: 32%;"></div>
+                            <div id="lumpsum-chart-returns" class="w-full bg-green-500 transition-all duration-700 border-b border-white/20" style="height: 68%;"></div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] uppercase tracking-tighter text-blue-500 mt-2 font-black">Projection</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
                 </div>
+            </div>
         </div>
+<div class="max-w-4xl mx-auto mt-6 px-4">
+    <div class="bg-cream-50/50 border border-orange-100 rounded-2xl p-6 text-center">
+        <p class="text-gray-700 text-base leading-relaxed mb-4">
+            For more advanced wealth models including <strong>Retirement Planning</strong>, <strong>Regular Income (SWP)</strong> strategies and <strong>Children's Higher Education</strong>  — please reach out to us for a personalized data-driven review.
+        </p>
+        
+        <button onclick="document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'})" 
+                class="gold-gradient text-white px-8 py-2.5 rounded-xl font-bold text-sm shadow-md hover:shadow-xl transition-all">
+            Schedule a Consultation
+        </button>
+    </div>
+</div>
     </section>
 
     <section class="py-10 bg-white" id="team">
@@ -506,11 +841,12 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Leadership & Legacy</h2>
             </div>
             
+          <div class="max-w-7xl mx-auto px-6">
 <div class="grid md:grid-cols-2 gap-8">
     <div class="premium-card rounded-2xl p-6 md:p-8">
         <div class="flex items-center mb-6">
             <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-gold-400 overflow-hidden flex-shrink-0 mr-4 md:mr-6 shadow-md">
-                <img src="images/N Kawchale.jpg" alt="Nurvandappa Kawchale Principal Partner" class="w-full h-full object-cover">
+                <img src="images/N Kawchale.jpg" alt="Nurvandappa Kawchale" class="w-full h-full object-cover">
             </div>
             <div class="flex-grow">
                 <h3 class="text-xl md:text-2xl font-bold text-gray-900 leading-tight">Nurvandappa Kawchale</h3>
@@ -523,7 +859,7 @@
     <div class="premium-card rounded-2xl p-6 md:p-8">
         <div class="flex items-center mb-6">
             <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-gold-400 overflow-hidden flex-shrink-0 mr-4 md:mr-6 shadow-md">
-                <img src="images/Sachin Kawachale.jpg" alt="Sachin Kawachale Strategic Mentor" class="w-full h-full object-cover">
+                <img src="images/Sachin Kawachale.jpg" alt="Sachin Kawachale" class="w-full h-full object-cover">
             </div>
             <div class="flex-grow">
                 <h3 class="text-xl md:text-2xl font-bold text-gray-900 leading-tight">Sachin Kawachale</h3>
@@ -536,7 +872,7 @@
     <div class="premium-card rounded-2xl p-6 md:p-8">
         <div class="flex items-center mb-6">
             <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-gold-400 overflow-hidden flex-shrink-0 mr-4 md:mr-6 shadow-md">
-                <img src="images/Sulakshana Kawachale.jpg" alt="Sulakshana Kawachale Psychology Expert" class="w-full h-full object-cover">
+                <img src="images/Sulakshana Kawachale.jpg" alt="Sulakshana Kawachale" class="w-full h-full object-cover">
             </div>
             <div class="flex-grow">
                 <h3 class="text-xl md:text-2xl font-bold text-gray-900 leading-tight">Sulakshana Kawachale</h3>
@@ -549,7 +885,7 @@
     <div class="premium-card rounded-2xl p-6 md:p-8">
         <div class="flex items-center mb-6">
             <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-gold-400 overflow-hidden flex-shrink-0 mr-4 md:mr-6 shadow-md">
-                <img src="images/Nilesh Kawchale.jpg" alt="Nilesh Kawchale Quantitative Strategist" class="w-full h-full object-cover">
+                <img src="images/Nilesh Kawchale.jpg" alt="Nilesh Kawchale" class="w-full h-full object-cover">
             </div>
             <div class="flex-grow">
                 <h3 class="text-xl md:text-2xl font-bold text-gray-900 leading-tight">Nilesh Kawchale</h3>
@@ -559,25 +895,49 @@
         <p class="text-gray-600 text-sm md:text-base leading-relaxed">An MBA and Certified NISM Investment Advisor Level 1, he ensures our framework removes emotional bias by building every portfolio on data and research.</p>
     </div>
 </div>
+			  
+</div>
         </div>
     </section>
 
-<section class="py-6 md:py-10 premium-gradient" id="contact-form">
+    <section class="py-6 md:py-10 premium-gradient" id="contact-form">
     <div class="max-w-3xl mx-auto px-6">
-        <div class="text-center mb-6">
+        <div class="text-center mb-6 md:mb-8">
             <div class="ornament mx-auto mb-3"></div>
-            <h2 class="text-2xl md:text-4xl font-bold text-gray-900">Schedule Your Free Consultation</h2>
+            <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-0 leading-tight" style="font-family: 'Playfair Display', serif;">
+                Schedule Your Free Consultation
+            </h2>
         </div>
+        
         <div class="bg-white rounded-2xl p-5 md:p-8 shadow-xl border border-orange-100">
-            <form action="https://formspree.io/f/xlgwnboa" method="POST" id="my-form" class="space-y-4">
+            <form action="https://formspree.io/f/xlgwnboa" method="POST" id="my-form" class="space-y-3 md:space-y-4">
                 <input type="hidden" name="_next" value="https://ankelitewealth.github.io/ank1/success.html">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <input type="text" name="name" placeholder="Full Name *" required class="w-full px-4 py-2 border border-gray-200 rounded-lg">
-                    <input type="tel" name="phone" placeholder="WhatsApp Number *" required class="w-full px-4 py-2 border border-gray-200 rounded-lg">
+                <input type="hidden" name="_subject" value="New Wealth Consultation Inquiry">
+
+                <div class="grid md:grid-cols-2 gap-3 md:gap-4">
+                    <div>
+                        <label class="block text-[10px] md:text-xs font-bold text-gray-700 mb-1 uppercase tracking-wider">Name *</label>
+                        <input type="text" name="name" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gold-400 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] md:text-xs font-bold text-gray-700 mb-1 uppercase tracking-wider">WhatsApp Number *</label>
+                        <input type="tel" name="phone" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gold-400 text-sm">
+                    </div>
                 </div>
-                <input type="email" name="email" placeholder="Email Address" class="w-full px-4 py-2 border border-gray-200 rounded-lg">
-                <textarea name="message" rows="2" placeholder="Message (Optional)" class="w-full px-4 py-2 border border-gray-200 rounded-lg"></textarea>
-                <button type="submit" class="w-full gold-gradient text-white py-3 rounded-xl font-bold text-base shadow-lg">Submit & Schedule</button>
+
+                <div>
+                    <label class="block text-[10px] md:text-xs font-bold text-gray-700 mb-1 uppercase tracking-wider">Email Address</label>
+                    <input type="email" name="email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gold-400 text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] md:text-xs font-bold text-gray-700 mb-1 uppercase tracking-wider">Message (Optional)</label>
+                    <textarea name="message" rows="2" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gold-400 text-sm"></textarea>
+                </div>
+
+                <button type="submit" class="w-full gold-gradient text-white py-3 rounded-xl font-bold text-base shadow-lg hover:scale-[1.01] transition-transform mt-1">
+                    Submit & Schedule Consultation
+                </button>
             </form>
         </div>
     </div>
@@ -592,65 +952,207 @@
                     </div>
                     <p class="text-gray-400 mb-6">Your trusted partner for disciplined wealth distribution.</p>
                 </div>
+                
                 <div>
                     <h3 class="text-white font-bold text-lg mb-4">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="#philosophy" class="hover:text-gold-400">Our Philosophy</a></li>
                         <li><a href="#process" class="hover:text-gold-400">Our Process</a></li>
                         <li><a href="#services" class="hover:text-gold-400">Investment Suite</a></li>
+                        <li><a href="#calculators" class="hover:text-gold-400">Wealth Lab</a></li>
+						<li><a href="#team" class="hover:text-gold-400">About Us</a></li>
                     </ul>
                 </div>
+                
                 <div>
                     <h3 class="text-white font-bold text-lg mb-4">Contact Us</h3>
                     <ul class="space-y-3">
                         <li>office@ankelitewealth.com</li>
+                        <li>Whatsapp : +919766844012 / +447459463518 </li>
                         <li>UK - London</li>
 						<li>India - Pune & Solapur</li>
                     </ul>
                 </div>
             </div>
+            
             <div class="border-t border-gray-800 pt-8 text-sm text-gray-400 space-y-3">
-                <p><strong>Disclosure:</strong> ANK Elite Wealth is a collaborative brand name. Mutual Fund distribution services facilitated through individual Distributors.</p>
-                <p>&copy; 2026 ANK Elite Wealth & Investment Services. All rights reserved.</p>
+                <p><strong>Disclosure:</strong>ANK Elite Wealth is a collaborative brand name. Mutual Fund distribution services are facilitated through individual AMFI Registered Mutual Fund Distributors: (ARN-XXXXX), (ARN-XXXXX), (ARN-XXXXX), and (ARN-XXXXX)..</p>
+                <p><strong>No Fee Claim:</strong>We do not provide fee-based investment advice. All information provided is incidental to our distribution services.</p>
+                <p><strong>Statutory Warning:</strong> Mutual Fund investments are subject to market risks. Please read all scheme-related documents carefully before investing.</p>
+                <p class="text-center pt-4">&copy; 2025 ANK Elite Wealth & Investment Services. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <a href="https://wa.me/919766844012" target="_blank" class="fixed bottom-8 right-8 z-50 bg-green-500 text-white p-5 rounded-full shadow-2xl hover:scale-110 transition-transform">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
     <script>
-        function showCalculator(index) {
-            document.querySelectorAll('.calculator-slide').forEach((el) => {
-                el.classList.remove('active');
-                el.style.display = 'none';
-            });
-            const activeSlide = document.getElementById(`calc-${index}`);
-            if (activeSlide) {
-                activeSlide.classList.add('active');
-                activeSlide.style.display = 'block';
-            }
-        }
+        // Calculator Slider
+function showCalculator(index) {
+    // 1. Hide all slides
+    document.querySelectorAll('.calculator-slide').forEach((el) => {
+        el.classList.remove('active');
+        el.style.display = 'none'; // Force hide
+    });
 
-        function updateSIP() {
-            const monthlyInvest = parseInt(document.getElementById('sip-amount').value);
-            const rate = parseFloat(document.getElementById('sip-return').value);
-            const years = parseInt(document.getElementById('sip-years').value);
+    // 2. Reset all tab styles to 'inactive'
+    document.querySelectorAll('[id^="tab-"]').forEach((tab) => {
+        tab.className = 'min-w-[85px] md:min-w-[160px] px-2 md:px-6 py-3 rounded-lg font-semibold bg-white border border-gray-200 text-gray-600 text-[11px] md:text-base whitespace-nowrap transition-all';
+    });
+
+    // 3. Show only the selected slide
+    const activeSlide = document.getElementById(`calc-${index}`);
+    if (activeSlide) {
+        activeSlide.classList.add('active');
+        activeSlide.style.display = 'block'; // Force show
+    }
+
+    // 4. Set the clicked tab to 'active'
+    const activeTab = document.getElementById(`tab-${index}`);
+    if (activeTab) {
+        activeTab.className = 'min-w-[85px] md:min-w-[160px] px-2 md:px-6 py-3 rounded-lg font-semibold bg-white border-2 border-gold-400 text-gold-600 text-[11px] md:text-base whitespace-nowrap transition-all';
+    }
+}
+        
+        // SIP Calculator
+      function updateSIP() {
+    const monthlyInvest = parseInt(document.getElementById('sip-amount').value);
+    const rate = parseFloat(document.getElementById('sip-return').value);
+    const years = parseInt(document.getElementById('sip-years').value);
+    const stepUpPercent = parseFloat(document.getElementById('sip-stepup').value) / 100;
+    
+    document.getElementById('sip-amount-display').textContent = `₹${monthlyInvest.toLocaleString('en-IN')}`;
+    document.getElementById('sip-return-display').textContent = `${rate}%`;
+    document.getElementById('sip-years-display').textContent = `${years} Years`;
+    document.getElementById('sip-stepup-display').textContent = `${stepUpPercent * 100}%`;
+    
+    const monthlyRate = rate / 12 / 100;
+    let totalInvested = 0;
+    let futureValue = 0;
+    let currentMonthlyInvest = monthlyInvest;
+
+    // Calculate year by year to account for the annual step-up
+    for (let year = 1; year <= years; year++) {
+        for (let month = 1; month <= 12; month++) {
+            futureValue = (futureValue + currentMonthlyInvest) * (1 + monthlyRate);
+            totalInvested += currentMonthlyInvest;
+        }
+        // Apply annual step-up after every 12 months
+        currentMonthlyInvest = currentMonthlyInvest * (1 + stepUpPercent);
+    }
+    
+    const returns = futureValue - totalInvested;
+    
+    document.getElementById('sip-invested').textContent = `₹${Math.round(totalInvested).toLocaleString('en-IN')}`;
+    document.getElementById('sip-returns').textContent = `₹${Math.round(returns).toLocaleString('en-IN')}`;
+    document.getElementById('sip-total').textContent = `₹${Math.round(futureValue).toLocaleString('en-IN')}`;
+    
+    const investedPct = (totalInvested / futureValue * 100);
+    const returnsPct = (returns / futureValue * 100);
+    document.getElementById('sip-chart-invested').style.height = `${investedPct}%`;
+    document.getElementById('sip-chart-returns').style.height = `${returnsPct}%`;
+}
+        
+        // Goal Calculator
+        function updateGoal() {
+            const goal = parseInt(document.getElementById('goal-amount').value);
+            const years = parseInt(document.getElementById('goal-years').value);
+            const rate = parseFloat(document.getElementById('goal-return').value);
             
-            document.getElementById('sip-amount-display').textContent = `₹${monthlyInvest.toLocaleString('en-IN')}`;
-            document.getElementById('sip-return-display').textContent = `${rate}%`;
-            document.getElementById('sip-years-display').textContent = `${years} Years`;
+            document.getElementById('goal-amount-display').textContent = `₹${(goal/100000).toFixed(0)},00,000`;
+            document.getElementById('goal-years-display').textContent = `${years} Years`;
+            document.getElementById('goal-return-display').textContent = `${rate}%`;
             
-            const monthlyRate = rate / 12 / 100;
             const months = years * 12;
-            const totalInvested = monthlyInvest * months;
-            const futureValue = monthlyInvest * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
-            const returns = futureValue - totalInvested;
+            const monthlyRate = rate / 12 / 100;
+            const sip = goal * monthlyRate / ((Math.pow(1 + monthlyRate, months) - 1) * (1 + monthlyRate));
+            const invested = sip * months;
+            const returns = goal - invested;
             
-            document.getElementById('sip-invested').textContent = `₹${Math.round(totalInvested).toLocaleString('en-IN')}`;
-            document.getElementById('sip-returns').textContent = `₹${Math.round(returns).toLocaleString('en-IN')}`;
-            document.getElementById('sip-total').textContent = `₹${Math.round(futureValue).toLocaleString('en-IN')}`;
+            document.getElementById('goal-sip').textContent = `₹${Math.round(sip).toLocaleString('en-IN')}`;
+            document.getElementById('goal-invested').textContent = `₹${Math.round(invested).toLocaleString('en-IN')}`;
+            document.getElementById('goal-returns').textContent = `₹${Math.round(returns).toLocaleString('en-IN')}`;
+            
+            const investedPct = (invested / goal * 100);
+            const returnsPct = (returns / goal * 100);
+            document.getElementById('goal-chart-invested').style.height = `${investedPct}%`;
+            document.getElementById('goal-chart-returns').style.height = `${returnsPct}%`;
+			
+			const goalAmount = parseInt(document.getElementById('goal-amount').value);
+    
+    
+    // ADD THIS LINE: Update the Target Goal Value result display
+    document.getElementById('goal-total').innerText = "₹" + goalAmount.toLocaleString('en-IN');
+    
+    // Ensure the slider display also updates
+    document.getElementById('goal-amount-display').innerText = "₹" + goalAmount.toLocaleString('en-IN');
+	
         }
-
+        
+        // Lumpsum Calculator
+        function updateLumpsum() {
+            const amount = parseInt(document.getElementById('lumpsum-amount').value);
+            const years = parseInt(document.getElementById('lumpsum-years').value);
+            const rate = parseFloat(document.getElementById('lumpsum-return').value);
+            
+            document.getElementById('lumpsum-amount-display').textContent = `₹${amount.toLocaleString('en-IN')}`;
+            document.getElementById('lumpsum-years-display').textContent = `${years} Years`;
+            document.getElementById('lumpsum-return-display').textContent = `${rate}%`;
+            
+            const futureValue = amount * Math.pow((1 + rate/100), years);
+            const returns = futureValue - amount;
+            
+            document.getElementById('lumpsum-invested').textContent = `₹${amount.toLocaleString('en-IN')}`;
+            document.getElementById('lumpsum-returns').textContent = `₹${Math.round(returns).toLocaleString('en-IN')}`;
+            document.getElementById('lumpsum-total').textContent = `₹${Math.round(futureValue).toLocaleString('en-IN')}`;
+            
+            const investedPct = (amount / futureValue * 100);
+            const returnsPct = (returns / futureValue * 100);
+            document.getElementById('lumpsum-chart-invested').style.height = `${investedPct}%`;
+            document.getElementById('lumpsum-chart-returns').style.height = `${returnsPct}%`;
+        }
+        
+        // Initialize
         showCalculator(0);
         updateSIP();
+        updateGoal();
+        updateLumpsum();
     </script>
+
+<script>
+  var form = document.getElementById("my-form");
+  
+  async function handleSubmit(event) {
+    event.preventDefault();
+    var status = document.getElementById("my-form-status");
+    var data = new FormData(event.target);
+    fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+          'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        // THIS IS THE REDIRECT FORCE
+        window.location.href = "https://ankelitewealth.github.io/ank1/success.html";
+      } else {
+        response.json().then(data => {
+          if (Object.hasOwn(data, 'errors')) {
+            alert(data["errors"].map(error => error["message"]).join(", "));
+          } else {
+            alert("Oops! There was a problem submitting your form");
+          }
+        })
+      }
+    }).catch(error => {
+      alert("Oops! There was a problem submitting your form");
+    });
+  }
+  form.addEventListener("submit", handleSubmit)
+</script>
+
 </body>
 </html>
